@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sugar Grove Cafe - Crepes, Breakfast & Lunch in Sugar Grove, IL</title>
+<meta name="description" content="Family-owned cafe serving fresh crepes, breakfast and lunch daily plus Friday dinner in Sugar Grove. Warm, welcoming, made-from-scratch." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FBF5EA;
+  --surface: #FFFCF5;
+  --surface-deep: #F1E7D2;
+  --primary: #2E3F5F;
+  --primary-soft: #4A5C7F;
+  --accent: #E8A23C;
+  --accent-hover: #C8841E;
+  --rose: #C58C7E;
+  --text: #1F2A40;
+  --muted: #6F7A8F;
+  --border: rgba(46,63,95,0.12);
+  --shadow-sm: 0 1px 3px rgba(46,63,95,0.08);
+  --shadow-md: 0 8px 28px rgba(46,63,95,0.10);
+  --shadow-lg: 0 22px 60px rgba(46,63,95,0.16);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+h1, h2, h3, h4 {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--primary);
+}
+.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+/* ====== Header ====== */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 18px 0;
+  background: rgba(251,245,234,0.0);
+  transition: all .35s ease;
+}
+header.scrolled {
+  background: rgba(251,245,234,0.92);
+  backdrop-filter: blur(14px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+  box-shadow: var(--shadow-sm);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.logo-wordmark {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.4rem;
+  color: var(--primary);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.logo-wordmark em { font-style: italic; color: var(--accent); }
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.94rem;
+  position: relative;
+}
+.nav-links a:not(.btn)::after {
+  content: ''; position: absolute; left: 0; bottom: -4px;
+  width: 0; height: 2px; background: var(--accent); transition: width .3s ease;
+}
+.nav-links a:not(.btn):hover::after { width: 100%; }
+.social-row { display: flex; gap: 12px; }
+.social-row a {
+  width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border); border-radius: 50%;
+  color: var(--primary); text-decoration: none; transition: all .25s ease;
+}
+.social-row a:hover { background: var(--primary); color: var(--surface); transform: translateY(-2px); }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 26px; border: none; border-radius: 999px;
+  font-family: 'Source Sans 3', sans-serif; font-weight: 700; font-size: 0.95rem;
+  text-decoration: none; cursor: pointer; transition: all .25s ease;
+  letter-spacing: 0.02em;
+}
+.btn-primary {
+  background: var(--accent); color: #fff;
+  box-shadow: 0 8px 22px rgba(232,162,60,0.32);
+  animation: btnPulse 2.6s ease-in-out infinite;
+}
+.btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 14px 32px rgba(232,162,60,0.45); }
+.btn-outline {
+  background: transparent; color: var(--primary);
+  border: 1.5px solid var(--primary);
+}
+.btn-outline:hover { background: var(--primary); color: var(--surface); }
+@keyframes btnPulse {
+  0%,100% { box-shadow: 0 8px 22px rgba(232,162,60,0.32); }
+  50%     { box-shadow: 0 8px 22px rgba(232,162,60,0.55), 0 0 0 8px rgba(232,162,60,0.0); }
+}
+
+/* ====== Hero ====== */
+.hero {
+  min-height: 92vh;
+  padding: 140px 0 80px;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(60% 50% at 12% 20%, rgba(232,162,60,0.14) 0%, transparent 60%),
+    radial-gradient(50% 40% at 85% 80%, rgba(46,63,95,0.10) 0%, transparent 60%),
+    linear-gradient(160deg, var(--bg) 0%, var(--surface) 60%, var(--surface-deep) 100%);
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0; opacity: 0.04;
+  background-image: radial-gradient(var(--primary) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center;
+  position: relative; z-index: 1;
+}
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 22px;
+}
+.eyebrow::before { content: ''; width: 32px; height: 1.5px; background: var(--accent); }
+.hero h1 {
+  font-size: clamp(2.8rem, 5.4vw, 4.6rem);
+  margin-bottom: 22px;
+}
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-sub {
+  font-size: 1.18rem; color: var(--muted); margin-bottom: 36px;
+  max-width: 540px; line-height: 1.6;
+}
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.hero-meta {
+  margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--border);
+  display: flex; gap: 32px; flex-wrap: wrap;
+}
+.meta-item { font-size: 0.92rem; color: var(--muted); }
+.meta-item strong { color: var(--primary); display: block; font-family: 'DM Serif Display', serif; font-size: 1.4rem; margin-bottom: 4px; }
+
+.hero-art {
+  position: relative; aspect-ratio: 4/5;
+  border-radius: 24px; overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transform: rotate(1.5deg);
+}
+.hero-art::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(46,63,95,0.10) 100%);
+}
+<!-- REPLACE WITH REAL PHOTO of the cafe's signature crepes or storefront -->
+.hero-art img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: saturate(1.08) contrast(1.04);
+}
+.hero-art-tag {
+  position: absolute; bottom: 24px; left: 24px; z-index: 2;
+  background: var(--surface); padding: 14px 20px; border-radius: 12px;
+  font-family: 'DM Serif Display', serif; color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+.hero-art-tag em { color: var(--accent); font-style: italic; }
+
+/* ====== Sections ====== */
+section { padding: clamp(80px, 10vw, 130px) 0; position: relative; }
+.section-head { text-align: center; margin-bottom: 64px; max-width: 720px; margin-left: auto; margin-right: auto; }
+.section-head .eyebrow { justify-content: center; }
+.section-head .eyebrow::before { display: none; }
+.section-head h2 { font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 16px; }
+.section-head p { color: var(--muted); font-size: 1.1rem; line-height: 1.6; }
+
+/* ====== Story ====== */
+.story { background: var(--surface); }
+.story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.story-text h2 { font-size: clamp(2rem, 3.6vw, 3rem); margin-bottom: 24px; }
+.story-text p { color: var(--text); font-size: 1.06rem; margin-bottom: 18px; line-height: 1.75; }
+.story-image {
+  aspect-ratio: 4/3; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-md);
+  position: relative;
+}
+<!-- REPLACE WITH REAL PHOTO of the cafe interior or the owners -->
+.story-image img { width: 100%; height: 100%; object-fit: cover; filter: sepia(0.06) saturate(1.05); }
+.story-image::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, transparent 50%, rgba(232,162,60,0.10) 100%);
+}
+
+/* ====== Menu ====== */
+.menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.menu-card {
+  background: var(--surface); border-radius: 16px; padding: 32px;
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  transition: all .35s ease;
+}
+.menu-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--accent); }
+.menu-cat {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 22px;
+  font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--primary);
+}
+.menu-cat::before { content: ''; width: 28px; height: 2px; background: var(--accent); }
+.menu-items { display: flex; flex-direction: column; gap: 14px; }
+.menu-row { display: flex; justify-content: space-between; gap: 14px; align-items: baseline; }
+.menu-row .name { color: var(--text); font-weight: 500; }
+.menu-row .desc { color: var(--muted); font-size: 0.88rem; display: block; font-weight: 400; margin-top: 2px; }
+.menu-row .price { color: var(--accent); font-weight: 700; font-family: 'DM Serif Display', serif; font-size: 1.08rem; white-space: nowrap; }
+.menu-note { text-align: center; margin-top: 28px; font-size: 0.85rem; color: var(--muted); font-style: italic; }
+
+/* ====== Gallery ====== */
+.gallery {
+  background: var(--surface-deep);
+  background-image: radial-gradient(rgba(46,63,95,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.gallery-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr; gap: 16px;
+  min-height: 540px;
+}
+.gallery-item { border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-md); position: relative; }
+.gallery-item:nth-child(1) { grid-row: 1 / 3; }
+<!-- REPLACE WITH REAL PHOTOS of the cafe's plates and dining room -->
+.gallery-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.7s ease; filter: saturate(1.1) contrast(1.04);
+}
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-item::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 70%, rgba(46,63,95,0.20) 100%);
+}
+
+/* ====== Reviews ====== */
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.review-card {
+  background: var(--surface); padding: 32px; border-radius: 16px;
+  border-top: 3px solid var(--accent); box-shadow: var(--shadow-sm);
+  position: relative; transition: all .3s ease;
+}
+.review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.review-card::before {
+  content: '"'; position: absolute; top: -18px; left: 24px;
+  font-family: 'DM Serif Display', serif; font-size: 5rem; color: var(--accent);
+  line-height: 1; opacity: 0.6;
+}
+.review-stars { color: var(--accent); margin-bottom: 12px; letter-spacing: 2px; font-size: 1.1rem; }
+.review-text { font-style: italic; color: var(--text); margin-bottom: 18px; line-height: 1.65; }
+.review-name { font-weight: 600; color: var(--primary); font-size: 0.95rem; }
+
+/* ====== CTA Band ====== */
+.cta-band {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-soft) 100%);
+  color: var(--surface); text-align: center; position: relative; overflow: hidden;
+}
+.cta-band::before {
+  content: ''; position: absolute; inset: 0; opacity: 0.10;
+  background-image: radial-gradient(circle at 20% 30%, var(--accent) 0%, transparent 50%), radial-gradient(circle at 80% 70%, var(--rose) 0%, transparent 50%);
+}
+.cta-band h2 { color: var(--surface); margin-bottom: 16px; font-size: clamp(2.2rem, 4vw, 3.2rem); }
+.cta-band h2 em { color: var(--accent); font-style: italic; }
+.cta-band p { color: rgba(255,252,245,0.85); margin-bottom: 36px; font-size: 1.1rem; }
+.cta-band .btn-primary { animation: btnPulse 2.6s ease-in-out infinite; }
+
+/* ====== Contact / Map ====== */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: stretch; }
+.contact-info {
+  background: var(--surface); padding: 40px; border-radius: 18px;
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+}
+.contact-row { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px dashed var(--border); }
+.contact-row:last-child { border-bottom: none; }
+.contact-label {
+  font-size: 0.74rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); min-width: 80px; padding-top: 4px;
+}
+.contact-value { color: var(--text); font-weight: 500; }
+.contact-value a { color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--border); transition: all .2s ease; }
+.contact-value a:hover { color: var(--accent); border-color: var(--accent); }
+.hours-list { display: flex; flex-direction: column; gap: 8px; color: var(--text); font-size: 0.96rem; }
+.hours-list div { display: flex; justify-content: space-between; padding: 4px 0; }
+.hours-list .day { color: var(--muted); }
+.map-wrap { border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-md); min-height: 460px; }
+.map-wrap iframe { width: 100%; height: 100%; border: 0; min-height: 460px; }
+
+/* ====== Footer ====== */
+footer {
+  background: var(--primary); color: rgba(255,252,245,0.78);
+  padding: 70px 0 30px;
+}
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 50px; }
+.footer-col h4 {
+  font-family: 'Source Sans 3', sans-serif; color: var(--surface);
+  font-size: 0.84rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.footer-col p { font-size: 0.94rem; line-height: 1.65; margin-bottom: 8px; }
+.footer-col a { color: rgba(255,252,245,0.78); text-decoration: none; font-size: 0.94rem; display: block; padding: 4px 0; transition: color .2s ease; }
+.footer-col a:hover { color: var(--accent); }
+.footer-brand { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--surface); margin-bottom: 14px; }
+.footer-brand em { color: var(--accent); font-style: italic; }
+.footer-social { display: flex; gap: 10px; margin-top: 18px; }
+.footer-social a {
+  width: 36px; height: 36px; padding: 0; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,252,245,0.18); border-radius: 50%; color: rgba(255,252,245,0.78);
+}
+.footer-social a:hover { background: var(--accent); border-color: var(--accent); color: var(--primary); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,252,245,0.10); padding-top: 24px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  font-size: 0.84rem;
+}
+
+/* ====== Mobile sticky CTA ====== */
+.mobile-cta {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--surface); padding: 14px 16px;
+  border-top: 1px solid var(--border); box-shadow: 0 -4px 18px rgba(46,63,95,0.10);
+  z-index: 99;
+}
+.mobile-cta .btn { width: 100%; justify-content: center; }
+
+/* ====== Reveal ====== */
+.reveal { opacity: 0; transform: translateY(28px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ====== Responsive ====== */
+@media (max-width: 980px) {
+  .hero-grid, .story-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-art { aspect-ratio: 4/3; max-height: 420px; transform: none; }
+  .menu-grid, .reviews-grid, .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-grid { grid-template-rows: auto; min-height: auto; }
+  .gallery-item:nth-child(1) { grid-row: auto; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .nav-links.cta-only { display: flex; }
+  .nav-links.cta-only a:not(.btn) { display: none; }
+  .menu-grid, .reviews-grid, .gallery-grid, .footer-grid { grid-template-columns: 1fr; }
+  .mobile-cta { display: block; }
+  body { padding-bottom: 76px; }
+  .hero { padding-top: 100px; min-height: auto; }
+  .hero h1 { font-size: 2.6rem; }
+}
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="container nav-inner">
+    <a href="#top" class="logo-wordmark">Sugar Grove <em>Cafe</em></a>
+    <nav class="nav-links">
+      <a href="#menu">Menu</a>
+      <a href="#story">Our Story</a>
+      <a href="#visit">Visit</a>
+      <a href="tel:6302778380" class="btn btn-primary">Call to Order</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">Crepes, breakfast & lunch</span>
+      <h1>Made with <em>love</em>, served warm, on Route 30.</h1>
+      <p class="hero-sub">A family-run cafe tucked into a small tan building just outside Sugar Grove. Hand-folded crepes, real maple syrup, scratch-cooked breakfast and lunch every day, and a Friday dinner crowd that fills the place to the door.</p>
+      <div class="hero-ctas">
+        <a href="tel:6302778380" class="btn btn-primary">Call (630) 277-8380</a>
+        <a href="#menu" class="btn btn-outline">See the Menu</a>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-item"><strong>4.5&#9733;</strong>250+ Yelp reviews</div>
+        <div class="meta-item"><strong>5 yrs</strong>serving Sugar Grove</div>
+        <div class="meta-item"><strong>Fri</strong>dinner service</div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <!-- REPLACE WITH REAL PHOTO of the cafe's signature crepes -->
+      <img src="https://images.unsplash.com/photo-1519676867240-f03562e64548?w=1200&q=80" alt="Hand-folded crepes with berries and powdered sugar" />
+      <div class="hero-art-tag">Open <em>daily</em> at 7am</div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="container story-grid">
+    <div class="story-image">
+      <!-- REPLACE WITH REAL PHOTO of the cafe interior or the owners at work -->
+      <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1200&q=80" alt="Warm cafe interior with morning light" />
+    </div>
+    <div class="story-text">
+      <span class="eyebrow">Our story</span>
+      <h2>A small tan building on a rural road, packed every Friday night.</h2>
+      <p>Five years ago we opened the doors with a short menu, a couple of crepe pans, and a habit of knowing every regular by name. Not much has changed. The menu's grown a little. The pans are well-seasoned. And we still know your usual order.</p>
+      <p>What we do is simple - real ingredients, cooked from scratch, served warm. Crepes folded to order, eggs cracked the minute you walk in, soup simmered all morning. The kind of breakfast and lunch you'd make at home if you had the time, and the kind of Friday dinner that makes the drive worth it.</p>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">What we serve</span>
+      <h2>From the kitchen</h2>
+      <p>Made-to-order all day. Breakfast served 'til close. Friday dinner brings a few specials worth coming back for.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-cat">Crepes</div>
+        <div class="menu-items">
+          <div class="menu-row"><div><span class="name">Classic Strawberries & Cream</span><span class="desc">Fresh berries, whipped cream, powdered sugar</span></div><span class="price">$11 &#10033;</span></div>
+          <div class="menu-row"><div><span class="name">Nutella Banana</span><span class="desc">Warm Nutella, sliced banana, toasted almonds</span></div><span class="price">$10 &#10033;</span></div>
+          <div class="menu-row"><div><span class="name">Ham, Spinach & Swiss</span><span class="desc">Savory crepe with fresh side salad</span></div><span class="price">$12 &#10033;</span></div>
+          <div class="menu-row"><div><span class="name">Chicken Florentine</span><span class="desc">Grilled chicken, spinach, parmesan cream sauce</span></div><span class="price">$14 &#10033;</span></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-cat">Breakfast plates</div>
+        <div class="menu-items">
+          <div class="menu-row"><div><span class="name">Farmhouse Breakfast</span><span class="desc">Two eggs, bacon or sausage, hashbrowns, toast</span></div><span class="price">$11 &#10033;</span></div>
+          <div class="menu-row"><div><span class="name">Country Skillet</span><span class="desc">Hash, eggs, peppers, onions, cheese</span></div><span class="price">$12 &#10033;</span></div>
+          <div class="menu-row"><div><span class="name">French Toast</span><span class="desc">Thick-cut brioche, real maple syrup</span></div><span class="price">$10 &#10033;</span></div>
+          <div class="menu-row"><div><span class="name">Buttermilk Pancakes</span><span class="desc">Stack of three, butter, syrup</span></div><span class="price">$9 &#10033;</span></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-cat">Lunch</div>
+        <div class="menu-items">
+          <div class="menu-row"><div><span class="name">Soup of the Day</span><span class="desc">Made fresh every morning</span></div><span class="price">$6 &#10033;</span></div>
+          <div class="menu-row"><div><span class="name">Reuben on Marble Rye</span><span class="desc">Corned beef, kraut, swiss, house dressing</span></div><span class="price">$12 &#10033;</span></div>
+          <div class="menu-row"><div><span class="name">Turkey Club</span><span class="desc">Triple-decker, bacon, lettuce, tomato</span></div><span class="price">$13 &#10033;</span></div>
+          <div class="menu-row"><div><span class="name">Cafe Burger</span><span class="desc">Half-pound, hand-pattied, fries</span></div><span class="price">$13 &#10033;</span></div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-cat">Friday dinner</div>
+        <div class="menu-items">
+          <div class="menu-row"><div><span class="name">Baked Mostaccioli</span><span class="desc">House marinara, three cheeses, garlic bread</span></div><span class="price">$15 &#10033;</span></div>
+          <div class="menu-row"><div><span class="name">Beef Stroganoff</span><span class="desc">Sirloin tips, mushroom sauce, buttered noodles</span></div><span class="price">$17 &#10033;</span></div>
+          <div class="menu-row"><div><span class="name">Pan-Seared Chicken</span><span class="desc">Mashed potatoes, seasonal vegetable</span></div><span class="price">$16 &#10033;</span></div>
+          <div class="menu-row"><div><span class="name">Authentic Mexican Plate</span><span class="desc">Ask your server for tonight's preparation</span></div><span class="price">$15 &#10033;</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="menu-note">&#10033; Prices shown are placeholders - confirm with owner before launch.</p>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Around the cafe</span>
+      <h2>A look inside</h2>
+      <p>Warm light, full plates, and a Friday night that always runs long.</p>
+    </div>
+    <div class="gallery-grid">
+      <!-- REPLACE WITH REAL PHOTOS of the cafe's interior and signature dishes -->
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1481931098730-318b6f776db0?w=900&q=80" alt="Crepes plated with fresh berries" /></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1551218372-a8789b81b253?w=600&q=80" alt="Hot coffee being poured" /></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&q=80" alt="Breakfast plate with eggs and bacon" /></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=600&q=80" alt="French toast with maple syrup" /></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&q=80" alt="Bowl of homemade soup" /></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">What people say</span>
+      <h2>The Yelp regulars don't hold back</h2>
+      <p>Themes from real reviews on Yelp and Facebook (paraphrased).</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">The crepes are unreal. Real strawberries, real whipped cream, no shortcuts. Friday dinner is now a weekly thing for us.</p>
+        <div class="review-name">- Emma R.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">Small place, big personality. The owners know my coffee order. Hashbrowns are perfect every single time.</p>
+        <div class="review-name">- Jeff M.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+        <p class="review-text">Out-of-the-way spot on Route 30 worth the drive. The mostaccioli reminded me of my grandmother's. Bring cash, it's that kind of place.</p>
+        <div class="review-name">- Lisa T.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Hungry? <em>Come on by.</em></h2>
+    <p>Open daily at 7am. Call ahead for Friday dinner if you've got a group.</p>
+    <a href="tel:6302778380" class="btn btn-primary">Call (630) 277-8380</a>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Find us</span>
+      <h2>Visit the cafe</h2>
+      <p>Little tan building on US Route 30 - if you blink you'll miss it. Worth the second look.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-row"><span class="contact-label">Address</span><span class="contact-value"><a href="https://maps.apple.com/?q=1942+US+Route+30+Sugar+Grove+IL+60554">1942 US Route 30<br/>Sugar Grove, IL 60554</a></span></div>
+        <div class="contact-row"><span class="contact-label">Phone</span><span class="contact-value"><a href="tel:6302778380">(630) 277-8380</a></span></div>
+        <div class="contact-row"><span class="contact-label">Hours</span>
+          <span class="contact-value">
+            <div class="hours-list">
+              <div><span class="day">Mon - Thu</span><span>7am - 3pm</span></div>
+              <div><span class="day">Friday</span><span>7am - 8pm</span></div>
+              <div><span class="day">Sat - Sun</span><span>7am - 3pm</span></div>
+            </div>
+          </span>
+        </div>
+        <div class="contact-row"><span class="contact-label">Social</span>
+          <span class="contact-value">
+            <div class="social-row">
+              <a href="https://www.facebook.com/Sugargrovecafe/" aria-label="Facebook" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+              <a href="https://www.yelp.com/biz/sugar-grove-cafe-sugar-grove" aria-label="Yelp" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.16 12.594l-1.49-.5c-1.19-.4-1.19-1.508 0-1.908l1.49-.5c.83-.28 1.273-1.123.99-1.953l-.51-1.49c-.282-.83-1.124-1.273-1.953-.99l-1.49.5c-1.19.4-2.18-.51-1.95-1.732l.32-1.55c.18-.85-.39-1.69-1.24-1.87l-1.56-.32c-.85-.18-1.69.39-1.87 1.24l-.32 1.56c-.23 1.22-1.4 1.55-2.27.67l-1.1-1.1c-.61-.61-1.6-.61-2.21 0l-1.11 1.1c-.61.61-.61 1.6 0 2.21l1.1 1.1c.88.87.55 2.04-.67 2.27l-1.56.32c-.85.18-1.42 1.02-1.24 1.87l.32 1.56c.18.85 1.02 1.42 1.87 1.24l1.55-.32c1.22-.23 2.13.76 1.73 1.95l-.5 1.49c-.28.83.16 1.67.99 1.95l1.49.51c.83.28 1.67-.16 1.95-.99l.5-1.49c.4-1.19 1.51-1.19 1.91 0l.5 1.49c.28.83 1.12 1.27 1.95.99l1.49-.51c.83-.28 1.27-1.12.99-1.95z"/></svg></a>
+            </div>
+          </span>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps?q=1942+US+Route+30+Sugar+Grove+IL+60554&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Sugar Grove <em>Cafe</em></div>
+        <p>Family-run cafe on US Route 30. Crepes, breakfast and lunch every day, Friday dinner that fills the place.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/Sugargrovecafe/" aria-label="Facebook" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="https://www.yelp.com/biz/sugar-grove-cafe-sugar-grove" aria-label="Yelp" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.16 12.594l-1.49-.5c-1.19-.4-1.19-1.508 0-1.908l1.49-.5c.83-.28 1.273-1.123.99-1.953l-.51-1.49c-.282-.83-1.124-1.273-1.953-.99l-1.49.5c-1.19.4-2.18-.51-1.95-1.732l.32-1.55c.18-.85-.39-1.69-1.24-1.87l-1.56-.32c-.85-.18-1.69.39-1.87 1.24l-.32 1.56c-.23 1.22-1.4 1.55-2.27.67l-1.1-1.1c-.61-.61-1.6-.61-2.21 0l-1.11 1.1c-.61.61-.61 1.6 0 2.21l1.1 1.1c.88.87.55 2.04-.67 2.27l-1.56.32c-.85.18-1.42 1.02-1.24 1.87l.32 1.56c.18.85 1.02 1.42 1.87 1.24l1.55-.32c1.22-.23 2.13.76 1.73 1.95l-.5 1.49c-.28.83.16 1.67.99 1.95l1.49.51c.83.28 1.67-.16 1.95-.99l.5-1.49c.4-1.19 1.51-1.19 1.91 0l.5 1.49c.28.83 1.12 1.27 1.95.99l1.49-.51c.83-.28 1.27-1.12.99-1.95z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <p>1942 US Route 30<br/>Sugar Grove, IL 60554</p>
+        <p><a href="tel:6302778380">(630) 277-8380</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <p>Mon - Thu &nbsp; 7am - 3pm</p>
+        <p>Friday &nbsp;&nbsp;&nbsp;&nbsp; 7am - 8pm</p>
+        <p>Sat - Sun &nbsp;&nbsp; 7am - 3pm</p>
+      </div>
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <a href="#menu">Crepes</a>
+        <a href="#menu">Breakfast</a>
+        <a href="#menu">Lunch</a>
+        <a href="#menu">Friday dinner</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Sugar Grove Cafe. All rights reserved.</span>
+      <span>Website by <a href="https://johnathon-builds.vercel.app" style="color:var(--accent)">Johnathon Builds</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-cta">
+  <a href="tel:6302778380" class="btn btn-primary">Call (630) 277-8380</a>
+</div>
+
+<script>
+// Header on scroll
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 80) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+});
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('section').forEach(s => { s.classList.add('reveal'); observer.observe(s); });
+</script>
+
+<!-- ===========================================================================
+     Visual Editor for Johnathon Builds sites.
+     Injected before </body> by inject-editor.ps1.
+     Activates ONLY when the URL contains ?edit=jb2026. Otherwise inert.
+     Save mechanism uses GitHub Contents API with a token injected at deploy
+     time (look for the {{GITHUB_TOKEN}} placeholder which inject-editor.ps1
+     replaces with the real token).
+     =========================================================================== -->
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('edit') !== 'jb2026') return;
+  var GH_TOKEN_KEY = 'jb-editor-gh-token-v1';
+  function getStoredToken() { try { return localStorage.getItem(GH_TOKEN_KEY) || ''; } catch (e) { return ''; } }
+  function setStoredToken(t) { try { localStorage.setItem(GH_TOKEN_KEY, t); } catch (e) {} }
+  function clearStoredToken() { try { localStorage.removeItem(GH_TOKEN_KEY); } catch (e) {} }
+  var GH_OWNER = 'JohnathonRizzuto';
+  var GH_REPO = location.hostname.split('.')[0].split('-rizzuto')[0];
+  var GH_BRANCH = 'main';
+  var GH_FILE = 'index.html';
+  var style = document.createElement('style');
+  style.textContent = '#jb-toolbar{position:fixed;top:0;left:0;right:0;z-index:99999;background:#0a0e1a;color:#e7eaf6;border-bottom:1px solid #2a3358;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;font-size:13px;display:flex;align-items:center;gap:8px;padding:8px 16px;box-shadow:0 4px 24px rgba(0,0,0,0.4)} #jb-toolbar .jb-brand{font-weight:700;color:#fbbf24;letter-spacing:0.06em;text-transform:uppercase;font-size:11px} #jb-toolbar .jb-spacer{flex:1} #jb-toolbar button{background:transparent;border:1px solid #475569;color:#e7eaf6;padding:6px 14px;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;transition:all 0.15s} #jb-toolbar button:hover{background:#1e293b;border-color:#94a3b8} #jb-toolbar button.primary{background:#f59e0b;color:#0a0e1a;border-color:#f59e0b;font-weight:700} #jb-toolbar button.primary:hover{background:#fbbf24} #jb-toolbar button.primary:disabled{opacity:0.5;cursor:wait} #jb-toolbar .jb-status{font-size:11px;color:#94a3b8;min-width:140px;text-align:right} body{padding-top:44px!important} [data-jb-editable]{outline:1px dashed transparent;outline-offset:2px;cursor:text;transition:outline-color 0.1s} [data-jb-editable]:hover{outline-color:#3b82f6} [data-jb-editable]:focus{outline:2px solid #3b82f6;outline-offset:2px;background:rgba(59,130,246,0.06)} img[data-jb-image]{cursor:pointer;outline:1px dashed transparent;transition:outline-color 0.1s} img[data-jb-image]:hover{outline-color:#10b981;outline-offset:4px} #jb-modal{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:99998;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(6px)} #jb-modal .jb-modal-card{background:#0f1320;border:1px solid #2a3358;border-radius:12px;padding:20px;max-width:500px;width:100%;color:#e7eaf6;font-family:-apple-system,sans-serif} #jb-modal h3{margin:0 0 12px;font-size:16px} #jb-modal p{margin:0 0 12px;font-size:13px;color:#94a3b8} #jb-modal input{width:100%;padding:10px;background:#07090f;border:1px solid #475569;border-radius:6px;color:#e7eaf6;font-size:13px;font-family:monospace;box-sizing:border-box} #jb-modal input:focus{outline:none;border-color:#3b82f6} #jb-modal .jb-modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px} #jb-toast{position:fixed;bottom:20px;right:20px;background:#10b981;color:white;padding:12px 20px;border-radius:8px;font-family:sans-serif;font-size:13px;font-weight:600;z-index:99997;box-shadow:0 4px 24px rgba(0,0,0,0.4);opacity:0;transform:translateY(10px);transition:all 0.2s} #jb-toast.show{opacity:1;transform:translateY(0)} #jb-toast.error{background:#ef4444}';
+  document.head.appendChild(style);
+  var toolbar = document.createElement('div');
+  toolbar.id = 'jb-toolbar';
+  toolbar.innerHTML = '<span class="jb-brand">JR EDITOR</span><button id="jb-help">?</button><span class="jb-spacer"></span><span class="jb-status" id="jb-status">click any text or image to edit</span><button id="jb-exit">Exit</button><button id="jb-save" class="primary">Save</button>';
+  document.body.appendChild(toolbar);
+  function status(msg){document.getElementById('jb-status').textContent=msg}
+  function toast(msg,isError){var t=document.getElementById('jb-toast');if(!t){t=document.createElement('div');t.id='jb-toast';document.body.appendChild(t)}t.textContent=msg;t.className=isError?'show error':'show';clearTimeout(t._timer);t._timer=setTimeout(function(){t.className=''},3200)}
+  var TEXT_SELECTORS='h1, h2, h3, h4, h5, h6, p, li, a, span, em, strong, td, blockquote, label, dd, dt';
+  function makeEditable(){document.querySelectorAll(TEXT_SELECTORS).forEach(function(el){if(el.closest('#jb-toolbar, #jb-modal, #jb-toast, script, style'))return;var hasText=Array.prototype.some.call(el.childNodes,function(n){return n.nodeType===3&&n.textContent.trim().length>0});if(!hasText)return;el.setAttribute('data-jb-editable','');el.setAttribute('contenteditable','true');el.addEventListener('focus',function(){status('editing -- click away to commit')});el.addEventListener('blur',function(){status('changes pending -- press Save to push live')})})}
+  function bindImages(){document.querySelectorAll('img').forEach(function(img){if(img.closest('#jb-toolbar, #jb-modal, #jb-toast'))return;img.setAttribute('data-jb-image','');img.addEventListener('click',function(e){if(e.target.contentEditable==='true')return;promptImageReplace(img)})})}
+  function stripPlaceholderComment(img){var prev=img.previousSibling;while(prev&&prev.nodeType===8){if(/REPLACE WITH REAL PHOTO/i.test(prev.textContent)){prev.parentNode.removeChild(prev);return}prev=prev.previousSibling}}
+  function promptImageReplace(img){var modal=document.createElement('div');modal.id='jb-modal';modal.innerHTML='<div class="jb-modal-card"><h3>Replace image</h3><p>Paste a direct image URL.</p><input type="url" id="jb-image-url" value="'+(img.src||'').replace(/"/g,'&quot;')+'" /><div class="jb-modal-actions"><button id="jb-image-cancel">Cancel</button><button id="jb-image-ok" class="primary">Replace</button></div></div>';document.body.appendChild(modal);var urlInput=document.getElementById('jb-image-url');function close(){try{document.body.removeChild(modal)}catch(e){}}document.getElementById('jb-image-cancel').onclick=close;document.getElementById('jb-image-ok').onclick=function(){var url=urlInput.value.trim();if(url){img.src=url;stripPlaceholderComment(img);toast('Image swapped -- press Save to push it live.')}close()};urlInput.focus();urlInput.select();urlInput.addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('jb-image-ok').click();if(e.key==='Escape')close()})}
+  function exitEditMode(){if(!confirm('Exit edit mode? Unsaved changes will be lost unless you Save first.'))return;window.location.href=window.location.pathname+window.location.hash}
+  function serializeForSave(){var clone=document.documentElement.cloneNode(true);['jb-toolbar','jb-modal','jb-toast'].forEach(function(id){var el=clone.querySelector('#'+id);if(el)el.parentNode.removeChild(el)});clone.querySelectorAll('style').forEach(function(s){if(/#jb-toolbar/.test(s.textContent))s.parentNode.removeChild(s)});clone.querySelectorAll('[data-jb-editable]').forEach(function(el){el.removeAttribute('data-jb-editable');el.removeAttribute('contenteditable')});clone.querySelectorAll('[data-jb-image]').forEach(function(el){el.removeAttribute('data-jb-image')});if(clone.querySelector('body')){var b=clone.querySelector('body');if(b.style&&b.style.paddingTop==='44px')b.style.paddingTop=''}return '<!DOCTYPE html>\n'+clone.outerHTML}
+  function ghHeaders(t){return{'Accept':'application/vnd.github+json','Authorization':'Bearer '+t,'X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'}}
+  function promptForToken(){return new Promise(function(resolve){var modal=document.createElement('div');modal.id='jb-modal';modal.innerHTML='<div class="jb-modal-card"><h3>GitHub token setup</h3><p>Paste your fine-grained PAT. Starts with github_pat_</p><input type="password" id="jb-token-input" placeholder="github_pat_..." /><div class="jb-modal-actions"><button id="jb-token-cancel">Cancel</button><button id="jb-token-ok" class="primary">Save</button></div></div>';document.body.appendChild(modal);var input=document.getElementById('jb-token-input');input.focus();function close(v){document.body.removeChild(modal);resolve(v)}document.getElementById('jb-token-cancel').onclick=function(){close('')};document.getElementById('jb-token-ok').onclick=function(){var v=input.value.trim();if(!v){close('');return}setStoredToken(v);close(v)};input.addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('jb-token-ok').click();if(e.key==='Escape')close('')})})}
+  function getToken(){var e=getStoredToken();return e?Promise.resolve(e):promptForToken()}
+  function getCurrentSha(token){var url='https://api.github.com/repos/'+GH_OWNER+'/'+GH_REPO+'/contents/'+GH_FILE+'?ref='+GH_BRANCH+'&_t='+Date.now();return fetch(url,{headers:ghHeaders(token),cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('GET sha '+r.status);return r.json()}).then(function(d){return d.sha})}
+  function pushUpdate(content,sha,token){var url='https://api.github.com/repos/'+GH_OWNER+'/'+GH_REPO+'/contents/'+GH_FILE;function toBase64(s){var b=new TextEncoder().encode(s),x='';b.forEach(function(c){x+=String.fromCharCode(c)});return btoa(x)}return fetch(url,{method:'PUT',headers:ghHeaders(token),body:JSON.stringify({message:'Edit via Visual Editor ('+new Date().toISOString()+')',content:toBase64(content),sha:sha,branch:GH_BRANCH})}).then(function(r){if(!r.ok)return r.text().then(function(t){throw new Error('PUT '+r.status+': '+t)});return r.json()})}
+  function save(){var btn=document.getElementById('jb-save');btn.disabled=true;btn.textContent='Saving...';return getToken().then(function(token){if(!token){btn.textContent='Save';btn.disabled=false;return}var content=serializeForSave();return getCurrentSha(token).then(function(sha){return pushUpdate(content,sha,token)}).then(function(){toast('Saved! Vercel deploys in ~15s.');btn.textContent='Saved';setTimeout(function(){btn.textContent='Save';btn.disabled=false},4000)}).catch(function(err){if(/401|403/.test(err.message))clearStoredToken();toast('Save failed: '+err.message,true);btn.textContent='Save';btn.disabled=false})})}
+  function showHelp(){var modal=document.createElement('div');modal.id='jb-modal';modal.innerHTML='<div class="jb-modal-card"><h3>Visual editor cheatsheet</h3><p>Click any text to edit. Click any image to swap. Save pushes to GitHub.</p><div class="jb-modal-actions"><button id="jb-help-ok" class="primary">Got it</button></div></div>';document.body.appendChild(modal);document.getElementById('jb-help-ok').onclick=function(){document.body.removeChild(modal)}}
+  function init(){makeEditable();bindImages();document.getElementById('jb-exit').onclick=exitEditMode;document.getElementById('jb-save').onclick=save;document.getElementById('jb-help').onclick=showHelp}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+
+</body>
+</html>

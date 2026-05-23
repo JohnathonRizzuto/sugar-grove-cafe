@@ -1,0 +1,11 @@
+{
+  "name": "Sugar Grove Cafe",
+  "town": "Sugar Grove IL",
+  "type": "restaurant",
+  "address": "1942 US Route 30, Sugar Grove, IL 60554",
+  "phone": "6302778380",
+  "checklistComplete": 11,
+  "researchStartedAt": "2026-05-23T17:30:00Z",
+  "stage1FinishedAt": "2026-05-23T17:42:00Z",
+  "outreachEligible": true
+}
