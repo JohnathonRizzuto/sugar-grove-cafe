@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sugar-grove-cafe.vercel.app/sitemap.xml
